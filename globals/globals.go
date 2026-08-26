@@ -1,0 +1,36 @@
+package globals
+
+import (
+	"database/sql"
+
+	pbfriends "github.com/PretendoNetwork/grpc/go/friends"
+	"github.com/PretendoNetwork/nex-go/v2"
+	common_globals "github.com/PretendoNetwork/nex-protocols-common-go/v2/globals"
+	"github.com/PretendoNetwork/plogger-go"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/metadata"
+
+	"github.com/PretendoNetwork/basic-games/games"
+)
+
+// Game is the game this process is serving
+var Game *games.Game
+
+var Postgres *sql.DB
+var MatchmakingManager *common_globals.MatchmakingManager
+var Logger *plogger.Logger
+var KerberosPassword = "password" // * Default password
+
+var AuthenticationServerPort int
+var SecureServerHost string
+var SecureServerPort int
+
+var AuthenticationServer *nex.PRUDPServer
+var AuthenticationEndpoint *nex.PRUDPEndPoint
+
+var SecureServer *nex.PRUDPServer
+var SecureEndpoint *nex.PRUDPEndPoint
+
+var GRPCFriendsClientConnection *grpc.ClientConn
+var GRPCFriendsClient pbfriends.FriendsClient
+var GRPCFriendsCommonMetadata metadata.MD
