@@ -3,6 +3,7 @@ package games
 import (
 	"github.com/PretendoNetwork/nex-go/v2"
 	"github.com/PretendoNetwork/nex-go/v2/constants"
+	"github.com/PretendoNetwork/nex-go/v2/types"
 )
 
 var tetrisAxis = Game{
@@ -25,6 +26,14 @@ var tetrisAxis = Game{
 	Secure: SecureProtocols{
 		SecureConnection: &SecureConnection{
 			InsecureRegister: true,
+			CreateReportDBRecord: func(_ types.PID, _ types.UInt32, _ types.QBuffer) error {
+				// * Stub for now, matches the existing repo
+				return nil
+			},
 		},
+		NATTraversal:       &NATTraversal{},
+		MatchMaking:        &MatchMaking{},
+		MatchMakingExt:     &MatchMakingExt{},
+		MatchmakeExtension: &MatchmakeExtension{},
 	},
 }

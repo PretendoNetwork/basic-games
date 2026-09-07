@@ -4,6 +4,7 @@ package games
 import (
 	"github.com/PretendoNetwork/nex-go/v2"
 	"github.com/PretendoNetwork/nex-go/v2/constants"
+	"github.com/PretendoNetwork/nex-go/v2/types"
 )
 
 // Game stores the per-game configuration data for a given game
@@ -86,6 +87,11 @@ type SecureConnection struct {
 	// InsecureRegister enables the less secure legacy Register method
 	// TODO - Remove both InsecureLogin and InsecureRegister, there are NO cases of games using both, a game MUST use one of the secure methods, so we can validate connections there
 	InsecureRegister bool
+
+	// CreateReportDBRecord sets the handler for the CreateReportDBRecord function in the
+	// common SecureConnectionProtocol implementation
+	// TODO - This is not great, ideally nex-protocols-common-go should just handle this and not REQUIRE the developer to define this. Should be an override in common and not exposed/required here
+	CreateReportDBRecord func(types.PID, types.UInt32, types.QBuffer) error
 }
 
 // MatchMaking configures the MatchMakingProtocol
