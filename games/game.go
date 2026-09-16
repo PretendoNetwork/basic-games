@@ -70,6 +70,8 @@ type SecureProtocols struct {
 	MatchMaking        *MatchMaking
 	MatchMakingExt     *MatchMakingExt
 	MatchmakeExtension *MatchmakeExtension
+	Ranking            *Ranking
+	StorageManager     *StorageManager
 }
 
 // TicketGranting configures the TicketGrantingProtocol
@@ -102,6 +104,12 @@ type MatchMakingExt struct{}
 
 // MatchmakeExtension configures the MatchmakeExtensionProtocol
 type MatchmakeExtension struct{}
+
+// Ranking configures the RankingProtocol
+type Ranking struct{}
+
+// StorageManager configures the StorageManagerProtocol
+type StorageManager struct{}
 
 // UsesMatchmaking reports whether or not a game uses any of the matchmaking protocols
 func (g *Game) UsesMatchmaking() bool {

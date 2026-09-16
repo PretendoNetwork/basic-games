@@ -35,5 +35,7 @@ var tetrisAxis = Game{
 		MatchMaking:        &MatchMaking{},
 		MatchMakingExt:     &MatchMakingExt{},
 		MatchmakeExtension: &MatchmakeExtension{},
+		Ranking:            &Ranking{},
+		StorageManager:     &StorageManager{},
 	},
 }
