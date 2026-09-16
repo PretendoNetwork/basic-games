@@ -11,7 +11,9 @@ import (
 	matchmakingext "github.com/PretendoNetwork/nex-protocols-go/v2/match-making-ext"
 	matchmakeextension "github.com/PretendoNetwork/nex-protocols-go/v2/matchmake-extension"
 	nattraversal "github.com/PretendoNetwork/nex-protocols-go/v2/nat-traversal"
+	ranking "github.com/PretendoNetwork/nex-protocols-go/v2/ranking"
 	secure "github.com/PretendoNetwork/nex-protocols-go/v2/secure-connection"
+	storagemanager "github.com/PretendoNetwork/nex-protocols-go/v2/storage-manager"
 
 	"github.com/PretendoNetwork/basic-games/globals"
 )
@@ -49,5 +51,17 @@ func registerCommonSecureServerProtocols() {
 		matchmakeExtensionProtocol := matchmakeextension.NewProtocol()
 		globals.SecureEndpoint.RegisterServiceProtocol(matchmakeExtensionProtocol)
 		commonmatchmakeextension.NewCommonProtocol(matchmakeExtensionProtocol).SetManager(globals.MatchmakingManager)
+	}
+
+	if globals.Game.Secure.Ranking != nil {
+		// TODO - HACK. This stubs the protocol so `Core::NotImplemented` gets thrown. Need to update nex-protocols-common-go to support this protocol
+		rankingProtocol := ranking.NewProtocol()
+		globals.SecureEndpoint.RegisterServiceProtocol(rankingProtocol)
+	}
+
+	if globals.Game.Secure.StorageManager != nil {
+		// TODO - HACK. This stubs the protocol so `Core::NotImplemented` gets thrown. Need to update nex-protocols-common-go to support this protocol
+		storageManagerProtocol := storagemanager.NewProtocol()
+		globals.SecureEndpoint.RegisterServiceProtocol(storageManagerProtocol)
 	}
 }
