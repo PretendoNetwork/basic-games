@@ -6,7 +6,8 @@ import (
 )
 
 var registry = map[string]*Game{
-	tetrisAxis.Slug: &tetrisAxis,
+	tetrisAxis.Slug:                 &tetrisAxis,
+	residentEvilRevelations3DS.Slug: &residentEvilRevelations3DS,
 }
 
 // Get returns the game with the given slug
